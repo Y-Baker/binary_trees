@@ -9,8 +9,7 @@ void binary_tree_delete(binary_tree_t *tree)
 {
 	if (!tree)
 		return;
-	else 
-		delete_recursion(tree);
+	delete_recursion(tree);
 }
 
 void delete_recursion(binary_tree_t *node)
