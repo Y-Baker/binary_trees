@@ -9,9 +9,9 @@
 bst_t *array_to_bst(int *array, size_t size)
 {
 	bst_t *root = NULL;
-	int i, tmp;
+	size_t i, tmp;
 
-	if (!array || size < 0)
+	if (!array)
 		return (NULL);
 
 	for (i = 0; i < size; i++)
