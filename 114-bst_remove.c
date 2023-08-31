@@ -24,27 +24,34 @@ bst_t *bst_remove(bst_t *root, int value)
 			free(root);
 			return (NULL);
 		}
+		tmp = to_remove->parent;
 		if (!to_remove->left && !to_remove->right)
 		{
+			if (tmp->left == to_remove)
+				tmp->left = NULL;
+			else
+				tmp->right = NULL;
 			free(to_remove);
-			to_remove = NULL;
 			return (root);
 		}
-		tmp = to_remove->parent;
 		if (to_remove->left && !to_remove->right)
 		{
-			if (tmp->left == to_remove)
+			if (!tmp)
+				root = to_remove->left;
+			if (tmp && tmp->left == to_remove)
 				tmp->left = to_remove->left;
-			else
+			else if (tmp && tmp->right == to_remove)
 				tmp->right = to_remove->left;
 			to_remove->left->parent = tmp;
 			free(to_remove);
 		}
 		if (to_remove->right && !to_remove->left)
 		{
-			if (tmp->left == to_remove)
+			if (!tmp)
+				root = to_remove->right;
+			if (tmp && tmp->left == to_remove)
 				tmp->left = to_remove->right;
-			else
+			else if (tmp && tmp->right == to_remove)
 				tmp->right = to_remove->right;
 			to_remove->right->parent = tmp;
 			free(to_remove);
