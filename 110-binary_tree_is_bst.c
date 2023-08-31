@@ -31,9 +31,9 @@ int node_is_bst(const binary_tree_t *tree, int min, int max)
 		return (0);
 
 	if (tree->left)
-		is_bst *= node_is_bst(tree->left, min, tree->n);
+		is_bst *= node_is_bst(tree->left, min, tree->n - 1);
 	if (tree->right)
-		is_bst *= node_is_bst(tree->right, tree->n, max);
+		is_bst *= node_is_bst(tree->right, tree->n + 1, max);
 
 	return (is_bst);
 }
