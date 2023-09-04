@@ -85,16 +85,11 @@ bst_t *inorder_successor(bst_t *tree)
 */
 void two_children(bst_t *node)
 {
-	bst_t *swap, *tmp;
+	bst_t *swap;
 
 	swap = inorder_successor(node->right);
 
 	node->n = swap->n;
 
-	tmp = swap->parent;
-	if (tmp->left == swap)
-		tmp->left = NULL;
-	else
-		tmp->right = NULL;
-	free(swap);
+	bst_remove(node->right, swap->n);
 }
